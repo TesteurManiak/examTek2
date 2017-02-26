@@ -5,7 +5,7 @@
 ** Login   <guillaume2.roux@epitech.eu>
 **
 ** Started on  Sun Feb 26 20:01:55 2017 Guillaume Roux
-** Last update Sun Feb 26 20:51:36 2017 Guillaume Roux
+** Last update Sun Feb 26 22:13:01 2017 Guillaume Roux
 */
 
 #include "my.h"
@@ -19,19 +19,20 @@ void	swap(char **a, char **b)
   *b = tmp;
 }
 
+char	to_upper(char c)
+{
+  if (c >= 'a' && c <= 'z')
+    return (c - 32);
+  return (c);
+}
+
 int	my_strcasecmp(char *s1, char *s2)
 {
-  int	i = 0;
+  int			i = 0;
 
-  if (my_strlen(s1) != my_strlen(s2))
-    return (1);
-  while (s1[i] && s2[i])
-    {
-      if (s1[i] != s2[i])
-	return (1);
-      i++;
-    }
-  return (0);
+  while ((to_upper(s1[i]) == to_upper(s2[i])) && (s1[i] != '\0') && (s2[i] != '\0'))
+    i++;
+  return (s1[i] - s2[i]);
 }
 
 void	sort(char **tab)
