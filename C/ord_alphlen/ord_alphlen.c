@@ -5,7 +5,7 @@
 ** Login   <guillaume2.roux@epitech.eu>
 **
 ** Started on  Sun Feb 26 20:01:55 2017 Guillaume Roux
-** Last update Mon Feb 27 03:07:26 2017 Guillaume Roux
+** Last update Mon Feb 27 03:21:03 2017 Guillaume Roux
 */
 
 #include "my.h"
@@ -30,9 +30,13 @@ int	my_strcasecmp(char *s1, char *s2)
 {
   int			i = 0;
 
-  while ((to_upper(s1[i]) == to_upper(s2[i])) && (s1[i] != '\0') && (s2[i] != '\0'))
-    i++;
-  return (s1[i] - s2[i]);
+  while ((s1[i] != '\0') && (s2[i] != '\0'))
+    {
+      if (to_upper(s1[i]) != to_upper(s2[i]))
+	return (s1[i] - s2[i]);
+      i++;
+    }
+  return (0);
 }
 
 void	sort(char **tab)
