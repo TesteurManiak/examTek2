@@ -5,7 +5,7 @@
 ** Login   <guillaume2.roux@epitech.eu>
 **
 ** Started on  Sun Feb 26 20:01:55 2017 Guillaume Roux
-** Last update Mon Feb 27 03:21:03 2017 Guillaume Roux
+** Last update Mon Feb 27 03:50:27 2017 Guillaume Roux
 */
 
 #include "my.h"
@@ -19,11 +19,13 @@ void	swap(char **a, char **b)
   *b = tmp;
 }
 
-char	to_upper(char c)
+char	to_upper(char *c)
 {
-  if (c >= 'a' && c <= 'z')
-    return (c - 32);
-  return (c);
+  char	tmp = *c;
+
+  if (tmp >= 'a' && tmp <= 'z')
+    return (tmp - 32);
+  return (tmp);
 }
 
 int	my_strcasecmp(char *s1, char *s2)
@@ -32,8 +34,13 @@ int	my_strcasecmp(char *s1, char *s2)
 
   while ((s1[i] != '\0') && (s2[i] != '\0'))
     {
-      if (to_upper(s1[i]) != to_upper(s2[i]))
-	return (s1[i] - s2[i]);
+      if (to_upper(&s1[i]) != to_upper(&s2[i]))
+	{
+	 if (to_upper(&s1[i]) < to_upper(&s2[i]))
+	   return (0);
+	 else
+	   return (1);
+	}
       i++;
     }
   return (0);
@@ -41,17 +48,19 @@ int	my_strcasecmp(char *s1, char *s2)
 
 void	sort(char **tab)
 {
-  int		i = 0;
-  int		j;
+  int	i = 0;
+  int	j;
 
   while (tab[i])
     {
-      for (j = i; tab[j]; ++j)
+      j = i;
+      while (tab[j])
 	{
 	  if (my_strlen(tab[j]) < my_strlen(tab[i]))
 	    swap(&tab[i], &tab[j]);
-	  else if (my_strlen(tab[j]) == my_strlen(tab[i]) && my_strcasecmp(tab[i], tab[j]) > 0)
+	  else if (my_strlen(tab[j]) == my_strlen(tab[j]) && my_strcasecmp(tab[i], tab[j]) != 0)
 	    swap(&tab[i], &tab[j]);
+	  j++;
 	}
       i++;
     }

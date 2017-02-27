@@ -5,7 +5,7 @@
 ** Login   <exam@epitech.net>
 **
 ** Started on  Sat Feb 25 11:24:20 2017 exam user
-** Last update Sun Feb 26 22:39:52 2017 Guillaume Roux
+** Last update Mon Feb 27 03:56:22 2017 Guillaume Roux
 */
 
 #include "my.h"
@@ -29,12 +29,18 @@ void	my_putchar(char c)
 
 void	aff_tab(char **tab)
 {
-  int	i = 0;
+  int		i;
 
-  while (tab[i] != '\0')
+  i = 0;
+  while (tab[i])
     {
       my_putstr(tab[i]);
-      my_putchar('\n');
+      if (tab[i + 1] == NULL)
+	my_putchar('\n');
+      else if (my_strlen(tab[i]) == my_strlen(tab[i + 1]))
+	my_putchar(' ');
+      else
+	my_putchar('\n');
       i++;
     }
 }
