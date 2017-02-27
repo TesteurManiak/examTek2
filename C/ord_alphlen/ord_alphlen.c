@@ -5,7 +5,7 @@
 ** Login   <guillaume2.roux@epitech.eu>
 **
 ** Started on  Sun Feb 26 20:01:55 2017 Guillaume Roux
-** Last update Sun Feb 26 22:13:01 2017 Guillaume Roux
+** Last update Mon Feb 27 03:07:26 2017 Guillaume Roux
 */
 
 #include "my.h"
@@ -37,18 +37,19 @@ int	my_strcasecmp(char *s1, char *s2)
 
 void	sort(char **tab)
 {
-  int		i;
+  int		i = 0;
   int		j;
 
-  for (i = 0; tab[i]; ++i)
+  while (tab[i])
     {
       for (j = i; tab[j]; ++j)
-    {
+	{
 	  if (my_strlen(tab[j]) < my_strlen(tab[i]))
 	    swap(&tab[i], &tab[j]);
 	  else if (my_strlen(tab[j]) == my_strlen(tab[i]) && my_strcasecmp(tab[i], tab[j]) > 0)
 	    swap(&tab[i], &tab[j]);
 	}
+      i++;
     }
 }
 

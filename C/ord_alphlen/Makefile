@@ -5,7 +5,7 @@
 ## Login   <exam@epitech.net>
 ##
 ## Started on  Sat Feb 25 11:22:43 2017 exam user
-## Last update Sun Feb 26 20:38:52 2017 Guillaume Roux
+## Last update Mon Feb 27 03:07:35 2017 Guillaume Roux
 ##
 
 NAME=	ord_alphlen
@@ -19,7 +19,7 @@ OBJ=	$(SRC:.c=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-		gcc -o $(NAME) $(OBJ) -std=gnu99
+		gcc -o $(NAME) $(OBJ) -std=c99
 
 clean:
 	rm -f $(OBJ)
