@@ -1,0 +1,1 @@
+SELECT membre.id_membre, COUNT(id_film) AS 'nb_films' FROM historique_membre, membre WHERE membre.id_membre = historique_membre.id_membre GROUP BY membre.id_membre ORDER BY COUNT(id_film) DESC, membre.id_membre ASC; 

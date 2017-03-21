@@ -1,0 +1,1 @@
+SELECT etage_salle AS 'num etage', COUNT(id_salle) AS 'nbr salle', SUM(nbr_siege) AS 'nbr place' FROM salle WHERE etage_salle = etage_salle GROUP BY etage_salle HAVING etage_salle IN(1, 2, 3) ORDER BY etage_salle DESC;

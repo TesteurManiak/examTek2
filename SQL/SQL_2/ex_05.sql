@@ -1,0 +1,1 @@
+SELECT id_membre, id_fiche_perso AS 'id_perso', date_inscription AS 'date inscription', DATEDIFF(CURDATE(), date_inscription) AS 'nbr jours' FROM membre WHERE DATEDIFF(CURDATE(), date_inscription) >= 2024 AND DATEDIFF(CURDATE(), date_inscription) <= 4048 ORDER BY date_inscription DESC;
