@@ -1,25 +1,16 @@
 /*
-** ulstr.c for ulstr in /home/exam/rendu/task02
+** ulstr.c for ulstr in /home/exam/rendu/ulstr
 ** 
 ** Made by exam user
 ** Login   <exam@epitech.net>
 ** 
-** Started on  Sat Mar 11 08:26:34 2017 exam user
-** Last update Sat Mar 11 08:44:22 2017 exam user
+** Started on  Sat Mar 25 08:52:45 2017 exam user
+** Last update Sat Mar 25 09:00:07 2017 exam user
 */
 
 #include <unistd.h>
 
-int	my_strlen(char *str)
-{
-  int	i = 0;
-
-  while (str[i])
-    i++;
-  return (i);
-}
-
-int	my_isalpha(char c)
+int	is_alpha(char c)
 {
   if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
     return (1);
@@ -35,29 +26,20 @@ int	is_maj(char c)
 
 void	ulstr(char *str)
 {
-  int	i = 0;
+  int	i;
   char	c;
 
-  if (!str)
-    return;
-  while (str[i])
+  for (i = 0; str[i]; i++)
     {
-      if (my_isalpha(str[i]) == 1)
+      c = str[i];
+      if (is_alpha(str[i]) == 1)
 	{
 	  if (is_maj(str[i]) == 1)
-	    {
-	      c = str[i] + 32;
-	      write(1, &c, 1);
-	    }
+	    c = str[i] + 32;
 	  else
-	    {
-	      c = str[i] - 32;
-	      write(1, &c, 1);
-	    }
+	    c = str[i] - 32;
 	}
-      else
-	write(1, &str[i], 1);
-      i++;
+      write (1, &(c), 1);
     }
-  write(1, "\n", 1);
+  write (1, "\n", 1);
 }
